@@ -52,9 +52,10 @@ final class NewsAPIService {
     ) {
 
         let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query
+        
 
         let url =
-        "https://\(AppConfig.baseURL)/everything?q=technology&page=\(page)&apiKey=\(AppConfig.apiKey)"
+        "https://\(AppConfig.baseURL)/everything?q=\(encoded)&page=\(page)&apiKey=\(AppConfig.apiKey)"
 
         let request = APIRequest(
             url: url,
