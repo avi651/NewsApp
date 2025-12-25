@@ -9,15 +9,14 @@ import Foundation
 
 final class NewsAPIService {
 
-    private let apiKey = "85a2c98d226a4365ac892854e30287d7"
-
     func fetchTopHeadlines(
         page: Int,
         completion: @escaping (Result<[Article], Error>) -> Void
     ) {
 
         let url =
-        "https://newsapi.org/v2/everything?q=technology&page=\(page)&apiKey=\(apiKey)"
+        "https://\(AppConfig.baseURL)/everything?q=technology&page=\(page)&apiKey=\(AppConfig.apiKey)"
+
 
         let request = APIRequest(
             url: url,
@@ -55,7 +54,7 @@ final class NewsAPIService {
         let encoded = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? query
 
         let url =
-        "https://newsapi.org/v2/everything?q=\(encoded)&page=\(page)&apiKey=\(apiKey)"
+        "https://\(AppConfig.baseURL)/everything?q=technology&page=\(page)&apiKey=\(AppConfig.apiKey)"
 
         let request = APIRequest(
             url: url,

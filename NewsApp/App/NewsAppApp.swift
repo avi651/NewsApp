@@ -9,24 +9,10 @@ import SwiftUI
 
 @main
 struct NewsAppApp: App {
+    private let di = AppDIContainer.shared
     var body: some Scene {
         WindowGroup {
-
-            let apiService = NewsAPIService()
-            let repository = NewsRepositoryImpl(apiService: apiService)
-
-            let fetchTopHeadlinesUseCase =
-                FetchTopHeadlinesUseCase(repository: repository)
-
-            let searchNewsUseCase =
-                SearchNewsUseCase(repository: repository)
-
-            let viewModel = NewsListViewModel(
-                fetchTopHeadlinesUseCase: fetchTopHeadlinesUseCase,
-                searchNewsUseCase: searchNewsUseCase
-            )
-
-            NewsListView(viewModel: viewModel)
+            MainTabView(di: di)
         }
     }
 }

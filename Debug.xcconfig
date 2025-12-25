@@ -1,0 +1,13 @@
+//
+//  Debug.xcconfig
+//  NewsApp
+//
+//  Created by Avinash on 25/12/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+NEWS_API_KEY = 85a2c98d226a4365ac892854e30287d7
+BASE_URL = newsapi.org/v2
