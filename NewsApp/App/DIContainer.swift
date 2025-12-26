@@ -8,7 +8,7 @@
 import Foundation
 import Swinject
 
-final class AppDIContainer {
+public final class AppDIContainer {
     
     static let shared = AppDIContainer()
     

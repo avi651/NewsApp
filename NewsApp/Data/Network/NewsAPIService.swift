@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NewsAPIService {
+public final class NewsAPIService {
 
     func fetchTopHeadlines(
         page: Int,

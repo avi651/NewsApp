@@ -26,7 +26,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Label("News", systemImage: "newspaper")
-            }
+            }.accessibilityIdentifier("news_tab")
             
             // 🔍 SEARCH TAB
             NavigationStack {
@@ -34,7 +34,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Label("Search", systemImage: "magnifyingglass")
-            }
+            }.accessibilityIdentifier("search_tab")
             
             // 🔖 SAVED TAB
             NavigationStack {
@@ -44,7 +44,7 @@ struct MainTabView: View {
             }
             .tabItem {
                 Label("Saved", systemImage: "bookmark")
-            }
+            }.accessibilityIdentifier("saved_tab")
             
         }
     }

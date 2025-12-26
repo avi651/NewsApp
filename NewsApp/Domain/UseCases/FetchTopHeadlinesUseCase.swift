@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class FetchTopHeadlinesUseCase {
+public final class FetchTopHeadlinesUseCase {
     private let repository: NewsRepository
     
     init(repository: NewsRepository) {
