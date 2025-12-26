@@ -14,4 +14,6 @@ struct NewsResponseDTO: Codable {
 struct ArticleDTO: Codable {
     let title: String?
     let description: String?
+    let url: String?
+    let urlToImage: String?
 }

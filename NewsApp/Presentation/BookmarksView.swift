@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct BookmarksView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
 
-#Preview {
-    BookmarksView()
+    @StateObject private var viewModel: BookmarksViewModel
+
+    init(viewModel: BookmarksViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
+    var body: some View {
+        Group {
+            if viewModel.articles.isEmpty {
+                Text("No Bookmarks")
+                    .foregroundColor(.secondary)
+            } else {
+                List {
+                    ForEach(viewModel.articles) { article in
+                        BookmarkRowView(article: article)
+                    }
+                    .onDelete(perform: viewModel.delete)
+                }
+            }
+        }
+        .navigationTitle("Saved")
+        .onAppear {
+            viewModel.load()
+        }
+    }
 }

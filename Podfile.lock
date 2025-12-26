@@ -1,16 +1,20 @@
 PODS:
+  - Kingfisher (7.12.0)
   - Swinject (2.9.1)
 
 DEPENDENCIES:
+  - Kingfisher (~> 7.0)
   - Swinject
 
 SPEC REPOS:
   trunk:
+    - Kingfisher
     - Swinject
 
 SPEC CHECKSUMS:
+  Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
   Swinject: a827d508c6270da03ec74e558e728917a888fa9b
 
-PODFILE CHECKSUM: 3962721cf9b2b64774790c4cc29a0e5adf2d9ba7
+PODFILE CHECKSUM: a3cb49ec6e58acb8e51934b974b6f266db6b165c
 
 COCOAPODS: 1.16.2

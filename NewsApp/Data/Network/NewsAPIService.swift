@@ -33,8 +33,11 @@ final class NewsAPIService {
             case .success(let response):
                 let articles = response.articles.map {
                     Article(
-                        title: $0.title ?? "No Title",
-                        description: $0.description ?? ""
+                        id: $0.url ?? "", 
+                        title:$0.title ?? "No Title",
+                        description: $0.description ?? "",
+                        url: $0.url ?? "",
+                        imageUrl: $0.urlToImage ?? ""
                     )
                 }
                 completion(.success(articles))
@@ -72,8 +75,11 @@ final class NewsAPIService {
             case .success(let response):
                 let articles = response.articles.map {
                     Article(
-                        title: $0.title ?? "No Title",
-                        description: $0.description ?? ""
+                        id: $0.url ?? "",
+                        title:$0.title ?? "No Title",
+                        description: $0.description ?? "",
+                        url: $0.url ?? "",
+                        imageUrl: $0.urlToImage ?? ""
                     )
                 }
                 completion(.success(articles))

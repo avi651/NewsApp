@@ -7,6 +7,7 @@ target 'NewsApp' do
 
   # Pods for NewsAppßß
   pod 'Swinject'
+  pod 'Kingfisher', '~> 7.0'
 
   target 'NewsAppTests' do
     inherit! :search_paths

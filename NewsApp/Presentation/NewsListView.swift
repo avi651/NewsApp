@@ -8,48 +8,52 @@
 import SwiftUI
 
 struct NewsListView: View {
-    
-    @StateObject private var articleViewModel: NewsListViewModel
-    
+
+    @StateObject private var viewModel: NewsListViewModel
+
     init(viewModel: NewsListViewModel) {
-        _articleViewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
-    
+
     var body: some View {
-        NavigationStack {
-            content
-                .navigationTitle("Top News")
-        }
+        content
+            .navigationTitle("Top News")
     }
-    
+
     @ViewBuilder
     private var content: some View {
-        switch articleViewModel.state {
-            
+        switch viewModel.state {
+
         case .loading:
             ProgressView("Loading...")
-            
+
         case .empty:
             VStack(spacing: 12) {
                 Text("No News Found")
                 Button("Retry") {
-                    articleViewModel.loadNews()
+                    viewModel.loadNews()
                 }
             }
-            
+
         case .error(let message):
             VStack(spacing: 12) {
                 Text(message)
                 Button("Retry") {
-                    articleViewModel.loadNews()
+                    viewModel.loadNews()
                 }
             }
-            
+
         case .loaded:
-            List(articleViewModel.articles) { article in
-                VStack(alignment: .leading) {
-                    Text(article.title).font(.headline)
-                    Text(article.description).font(.subheadline)
+            List(viewModel.articles) { article in
+                NewsRowView(
+                    article: article,
+                    isBookmarked: viewModel.isBookmarked(article),
+                    onBookmarkTap: {
+                        viewModel.toggleBookmark(article)
+                    }
+                )
+                .onAppear {
+                    viewModel.loadMoreIfNeeded(currentItem: article)
                 }
             }
         }

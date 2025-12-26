@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
     let di: AppDIContainer
+    
     var body: some View {
         TabView {
+            
+            // 📰 NEWS TAB
             NavigationStack {
                 NewsListView(
                     viewModel: NewsListViewModel(
                         fetchTopHeadlinesUseCase: di.container.resolve(FetchTopHeadlinesUseCase.self)!,
-                        searchNewsUseCase: di.container.resolve(SearchNewsUseCase.self)!
+                        searchNewsUseCase: di.container.resolve(SearchNewsUseCase.self)!,
+                        savedRepository: di.container.resolve(SavedArticlesRepository.self)!
                     )
                 )
-            }.tabItem {
+            }
+            .tabItem {
                 Label("News", systemImage: "newspaper")
             }
             
@@ -32,15 +38,14 @@ struct MainTabView: View {
             
             // 🔖 SAVED TAB
             NavigationStack {
-                BookmarksView()
+                BookmarksView(
+                    viewModel: di.container.resolve(BookmarksViewModel.self)!
+                )
             }
             .tabItem {
                 Label("Saved", systemImage: "bookmark")
             }
+            
         }
     }
 }
-
-//#Preview {
-//    MainTabView()
-//}
